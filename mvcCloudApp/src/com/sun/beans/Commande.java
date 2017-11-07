@@ -1,14 +1,30 @@
 package com.sun.beans;
 
-public class Commande {
-    /* Propriétés du bean */
-    private Client client;
-    private String date;
-    private Double montant;
-    private String modePaiement;
-    private String statutPaiement;
-    private String modeLivraison;
-    private String statutLivraison;
+import java.io.Serializable;
+import java.sql.Timestamp;
+
+public class Commande implements Serializable {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private Long    	id;
+    private Client   	client;
+    private Timestamp	date;
+    private Double   	montant;
+    private String   	modePaiement;
+    private String   	statutPaiement;
+    private String   	modeLivraison;
+    private String   	statutLivraison;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId( Long id ) {
+        this.id = id;
+    }
 
     public Client getClient() {
         return client;
@@ -18,11 +34,11 @@ public class Commande {
         this.client = client;
     }
 
-    public String getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate( String date ) {
+    public void setDate( Timestamp date ) {
         this.date = date;
     }
 
@@ -65,5 +81,4 @@ public class Commande {
     public void setStatutLivraison( String statutLivraison ) {
         this.statutLivraison = statutLivraison;
     }
-
 }
