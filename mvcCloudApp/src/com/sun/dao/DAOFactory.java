@@ -10,11 +10,11 @@ import java.util.Properties;
 
 public class DAOFactory {
 
-    private static final String FICHIER_PROPERTIES       = "/com/sdzee/sun/dao.properties";
+    private static final String FICHIER_PROPERTIES       = "com/sun/dao/dao.properties";
     private static final String PROPERTY_URL             = "url";
     private static final String PROPERTY_DRIVER          = "driver";
-    private static final String PROPERTY_NOM_UTILISATEUR = "Alex";
-    private static final String PROPERTY_MOT_DE_PASSE    = "OJgJcJ-ro2<g";
+    private static final String PROPERTY_NOM_UTILISATEUR = "nomutilisateur";
+    private static final String PROPERTY_MOT_DE_PASSE    = "motdepasse";
 
     private String              url;
     private String              username;

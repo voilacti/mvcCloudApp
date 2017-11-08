@@ -23,7 +23,7 @@
     
     <filter>
         <filter-name>PrechargementFilter</filter-name>
-        <filter-class>com.sdzee.tp.filters.PrechargementFilter</filter-class>
+        <filter-class>com.sun.filters.PrechargementFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>PrechargementFilter</filter-name>
@@ -31,12 +31,12 @@
     </filter-mapping>
     
     <listener>
-    <listener-class>com.sdzee.tp.config.InitialisationDaoFactory</listener-class>
+    <listener-class>com.sun.config.InitialisationDaoFactory</listener-class>
     </listener>
     
     <servlet>
         <servlet-name>CreationClient</servlet-name>
-        <servlet-class>com.sdzee.tp.servlets.CreationClient</servlet-class>
+        <servlet-class>com.sun.servlets.CreationClient</servlet-class>
         <init-param>
             <param-name>chemin</param-name> 
             <param-value>/fichiers/images/</param-value> 
@@ -50,15 +50,15 @@
     </servlet>
     <servlet>
         <servlet-name>ListeClients</servlet-name>
-        <servlet-class>com.sdzee.tp.servlets.ListeClients</servlet-class>
+        <servlet-class>com.sun.servlets.ListeClients</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SuppressionClient</servlet-name>
-        <servlet-class>com.sdzee.tp.servlets.SuppressionClient</servlet-class>
+        <servlet-class>com.sun.servlets.SuppressionClient</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CreationCommande</servlet-name>
-        <servlet-class>com.sdzee.tp.servlets.CreationCommande</servlet-class>
+        <servlet-class>com.sun.servlets.CreationCommande</servlet-class>
         <init-param>
             <param-name>chemin</param-name> 
             <param-value>/fichiers/images/</param-value> 
@@ -72,15 +72,15 @@
     </servlet>
     <servlet>
         <servlet-name>ListeCommandes</servlet-name>
-        <servlet-class>com.sdzee.tp.servlets.ListeCommandes</servlet-class>
+        <servlet-class>com.sun.servlets.ListeCommandes</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SuppressionCommande</servlet-name>
-        <servlet-class>com.sdzee.tp.servlets.SuppressionCommande</servlet-class>
+        <servlet-class>com.sun.servlets.SuppressionCommande</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Image</servlet-name>
-        <servlet-class>com.sdzee.tp.servlets.Image</servlet-class>
+        <servlet-class>com.sun.servlets.Image</servlet-class>
         <init-param>
             <param-name>chemin</param-name> 
             <param-value>/fichiers/images/</param-value> 
