@@ -42,7 +42,7 @@
             <param-value>/fichiers/images/</param-value> 
         </init-param>
         <multipart-config>
-            <location>c:/fichiers/images</location>
+            <location>/Users/Quentin/Pictures</location>
             <max-file-size>2097152</max-file-size> <!-- 2 Mo -->
             <max-request-size>10485760</max-request-size> <!-- 5 x 2Mo -->
             <file-size-threshold>1048576</file-size-threshold> <!-- 1 Mo -->
@@ -61,10 +61,10 @@
         <servlet-class>com.sun.servlets.CreationCommande</servlet-class>
         <init-param>
             <param-name>chemin</param-name> 
-            <param-value>/fichiers/images/</param-value> 
+            <param-value>/Users/Quentin/Pictures</param-value> 
         </init-param>
         <multipart-config>
-            <location>c:/fichiers/images</location>
+            <location>/Users/Quentin/Pictures</location>
             <max-file-size>2097152</max-file-size> <!-- 2 Mo -->
             <max-request-size>10485760</max-request-size> <!-- 5 x 2Mo -->
             <file-size-threshold>1048576</file-size-threshold> <!-- 1 Mo -->
@@ -83,7 +83,7 @@
         <servlet-class>com.sun.servlets.Image</servlet-class>
         <init-param>
             <param-name>chemin</param-name> 
-            <param-value>/fichiers/images/</param-value> 
+            <param-value>/Users/Quentin/Pictures</param-value> 
         </init-param>
     </servlet>
 
