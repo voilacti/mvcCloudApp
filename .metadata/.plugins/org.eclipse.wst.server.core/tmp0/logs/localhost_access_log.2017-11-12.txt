@@ -1,0 +1,13 @@
+127.0.0.1 - - [12/Nov/2017:20:27:25 +0100] "GET / HTTP/1.1" 404 962
+0:0:0:0:0:0:0:1 - - [12/Nov/2017:20:27:27 +0100] "GET /mvcCloudApp/ HTTP/1.1" 200 523
+0:0:0:0:0:0:0:1 - - [12/Nov/2017:20:27:30 +0100] "GET /mvcCloudApp/creationClient;jsessionid=9A06D71AEE028F34ECD9E825559D67DC HTTP/1.1" 200 2167
+0:0:0:0:0:0:0:1 - - [12/Nov/2017:20:27:30 +0100] "GET /mvcCloudApp/inc/style.css HTTP/1.1" 200 1500
+0:0:0:0:0:0:0:1 - - [12/Nov/2017:20:28:00 +0100] "POST /mvcCloudApp/creationClient HTTP/1.1" 200 927
+0:0:0:0:0:0:0:1 - - [12/Nov/2017:20:28:03 +0100] "GET /mvcCloudApp/listeClients HTTP/1.1" 200 1813
+0:0:0:0:0:0:0:1 - - [12/Nov/2017:20:28:03 +0100] "GET /mvcCloudApp/inc/supprimer.png HTTP/1.1" 200 955
+127.0.0.1 - - [12/Nov/2017:20:28:33 +0100] "GET / HTTP/1.1" 404 962
+0:0:0:0:0:0:0:1 - - [12/Nov/2017:20:28:34 +0100] "GET /mvcCloudApp/ HTTP/1.1" 200 347
+0:0:0:0:0:0:0:1 - - [12/Nov/2017:20:28:38 +0100] "GET /mvcCloudApp/listeClients HTTP/1.1" 200 1813
+127.0.0.1 - - [12/Nov/2017:20:31:11 +0100] "GET / HTTP/1.1" 404 962
+0:0:0:0:0:0:0:1 - - [12/Nov/2017:20:31:12 +0100] "GET /mvcCloudApp/ HTTP/1.1" 200 347
+0:0:0:0:0:0:0:1 - - [12/Nov/2017:20:31:17 +0100] "GET /mvcCloudApp/listeClients HTTP/1.1" 200 1813

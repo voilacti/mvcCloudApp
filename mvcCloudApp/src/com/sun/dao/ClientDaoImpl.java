@@ -11,9 +11,9 @@ import com.sun.beans.Client;
 
 public class ClientDaoImpl implements ClientDao {
 
-    private static final String SQL_SELECT        = "SELECT id, nom, prenom, adresse, telephone, email, image FROM Client ORDER BY id";
-    private static final String SQL_SELECT_PAR_ID = "SELECT id, nom, prenom, adresse, telephone, email, image FROM Client WHERE id = ?";
-    private static final String SQL_INSERT        = "INSERT INTO Client (nom, prenom, adresse, telephone, email, image) VALUES (?, ?, ?, ?, ?, ?)";
+    private static final String SQL_SELECT        = "SELECT id, nom, prenom, adresse, telephone, email FROM Client ORDER BY id";
+    private static final String SQL_SELECT_PAR_ID = "SELECT id, nom, prenom, adresse, telephone, email FROM Client WHERE id = ?";
+    private static final String SQL_INSERT        = "INSERT INTO Client (nom, prenom, adresse, telephone, email) VALUES (?, ?, ?, ?, ?)";
     private static final String SQL_DELETE_PAR_ID = "DELETE FROM Client WHERE id = ?";
 
     private DAOFactory          daoFactory;
@@ -39,8 +39,7 @@ public class ClientDaoImpl implements ClientDao {
             connexion = daoFactory.getConnection();
             preparedStatement = DAOUtilitaire.initialisationRequetePreparee( connexion, SQL_INSERT, true,
                     client.getNom(), client.getPrenom(),
-                    client.getAdresse(), client.getTelephone(),
-                    client.getEmail(), client.getImage() );
+                    client.getAdresse(), client.getTelephone(), client.getEmail());
             int statut = preparedStatement.executeUpdate();
             if ( statut == 0 ) {
                 throw new DAOException( "Échec de la création du client, aucune ligne ajoutée dans la table." );
@@ -150,7 +149,6 @@ public class ClientDaoImpl implements ClientDao {
         client.setAdresse( resultSet.getString( "adresse" ) );
         client.setTelephone( resultSet.getString( "telephone" ) );
         client.setEmail( resultSet.getString( "email" ) );
-        client.setImage( resultSet.getString( "image" ) );
         return client;
     }
 

@@ -14,7 +14,6 @@ public class Client implements Serializable {
     private String adresse;
     private String telephone;
     private String email;
-    private String image;
 
     public void setId( Long id ) {
         this.id = id;
@@ -62,13 +61,5 @@ public class Client implements Serializable {
 
     public String getEmail() {
         return email;
-    }
-
-    public void setImage( String image ) {
-        this.image = image;
-    }
-
-    public String getImage() {
-        return image;
     }
 }

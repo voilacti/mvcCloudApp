@@ -26,7 +26,6 @@ public final class CreationClientForm {
     private static final String CHAMP_ADRESSE   = "adresseClient";
     private static final String CHAMP_TELEPHONE = "telephoneClient";
     private static final String CHAMP_EMAIL     = "emailClient";
-    private static final String CHAMP_IMAGE     = "imageClient";
 
     private static final int    TAILLE_TAMPON   = 10240;                        // 10ko
 
@@ -60,7 +59,6 @@ public final class CreationClientForm {
         traiterAdresse( adresse, client );
         traiterTelephone( telephone, client );
         traiterEmail( email, client );
-        traiterImage( client, request, chemin );
 
         try {
             if ( erreurs.isEmpty() ) {
@@ -68,6 +66,10 @@ public final class CreationClientForm {
                 resultat = "Succès de la création du client.";
             } else {
                 resultat = "Échec de la création du client.";
+                for (Map.Entry<String, String> erreur : erreurs.entrySet()) {
+                	resultat += "/n" +  erreur.getValue() + " | " + erreur.getKey();
+                	resultat += "/n";
+                }
             }
         } catch ( DAOException e ) {
             setErreur( "imprévu", "Erreur imprévue lors de la création." );
@@ -123,16 +125,6 @@ public final class CreationClientForm {
         client.setEmail( email );
     }
 
-    private void traiterImage( Client client, HttpServletRequest request, String chemin ) {
-        String image = null;
-        try {
-            image = validationImage( request, chemin );
-        } catch ( FormValidationException e ) {
-            setErreur( CHAMP_IMAGE, e.getMessage() );
-        }
-        client.setImage( image );
-    }
-
     private void validationNom( String nom ) throws FormValidationException {
         if ( nom != null ) {
             if ( nom.length() < 2 ) {
@@ -175,81 +167,6 @@ public final class CreationClientForm {
         if ( email != null && !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
             throw new FormValidationException( "Merci de saisir une adresse mail valide." );
         }
-    }
-
-    private String validationImage( HttpServletRequest request, String chemin ) throws FormValidationException {
-        /*
-         * Récupération du contenu du champ image du formulaire. Il faut ici
-         * utiliser la méthode getPart().
-         */
-        String nomFichier = null;
-        InputStream contenuFichier = null;
-        try {
-            Part part = request.getPart( CHAMP_IMAGE );
-            nomFichier = getNomFichier( part );
-
-            /*
-             * Si la méthode getNomFichier() a renvoyé quelque chose, il s'agit
-             * donc d'un champ de type fichier (input type="file").
-             */
-            if ( nomFichier != null && !nomFichier.isEmpty() ) {
-                /*
-                 * Antibug pour Internet Explorer, qui transmet pour une raison
-                 * mystique le chemin du fichier local à la machine du client...
-                 * 
-                 * Ex : C:/dossier/sous-dossier/fichier.ext
-                 * 
-                 * On doit donc faire en sorte de ne sélectionner que le nom et
-                 * l'extension du fichier, et de se débarrasser du superflu.
-                 */
-                nomFichier = nomFichier.substring( nomFichier.lastIndexOf( '/' ) + 1 )
-                        .substring( nomFichier.lastIndexOf( '\\' ) + 1 );
-
-                /* Récupération du contenu du fichier */
-                contenuFichier = part.getInputStream();
-
-                /* Extraction du type MIME du fichier depuis l'InputStream */
-                MimeUtil.registerMimeDetector( "eu.medsea.mimeutil.detector.MagicMimeMimeDetector" );
-                Collection<?> mimeTypes = MimeUtil.getMimeTypes( contenuFichier );
-
-                /*
-                 * Si le fichier est bien une image, alors son en-tête MIME
-                 * commence par la chaîne "image"
-                 */
-                if ( mimeTypes.toString().startsWith( "image" ) ) {
-                    /* Écriture du fichier sur le disque */
-                    ecrireFichier( contenuFichier, nomFichier, chemin );
-                } else {
-                    throw new FormValidationException( "Le fichier envoyé doit être une image." );
-                }
-            }
-        } catch ( IllegalStateException e ) {
-            /*
-             * Exception retournée si la taille des données dépasse les limites
-             * définies dans la section <multipart-config> de la déclaration de
-             * notre servlet d'upload dans le fichier web.xml
-             */
-            e.printStackTrace();
-            throw new FormValidationException( "Le fichier envoyé ne doit pas dépasser 1Mo." );
-        } catch ( IOException e ) {
-            /*
-             * Exception retournée si une erreur au niveau des répertoires de
-             * stockage survient (répertoire inexistant, droits d'accès
-             * insuffisants, etc.)
-             */
-            e.printStackTrace();
-            throw new FormValidationException( "Erreur de configuration du serveur." );
-        } catch ( ServletException e ) {
-            /*
-             * Exception retournée si la requête n'est pas de type
-             * multipart/form-data.
-             */
-            e.printStackTrace();
-            throw new FormValidationException(
-                    "Ce type de requête n'est pas supporté, merci d'utiliser le formulaire prévu pour envoyer votre fichier." );
-        }
-
-        return nomFichier;
     }
 
     /*

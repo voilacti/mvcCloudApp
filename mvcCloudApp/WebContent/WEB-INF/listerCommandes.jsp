@@ -35,7 +35,7 @@
                 <tr class="${boucle.index % 2 == 0 ? 'pair' : 'impair'}">
                     <%-- Affichage des propriétés du bean Commande, qui est stocké en tant que valeur de l'entrée courante de la map --%>
                     <td><c:out value="${ mapCommandes.value.client.prenom } ${ mapCommandes.value.client.nom }"></c:out></td>
-                    <td><joda:format value="${ mapCommandes.value.date }" pattern="dd/MM/yyyy HH:mm:ss"></joda:format></td>
+                    <td><c:out value="${ mapCommandes.value.date }" ></c:out></td>
                     <td><c:out value="${ mapCommandes.value.montant }"></c:out></td>
                     <td><c:out value="${ mapCommandes.value.modePaiement }"></c:out></td>
                     <td><c:out value="${ mapCommandes.value.statutPaiement }"></c:out></td>

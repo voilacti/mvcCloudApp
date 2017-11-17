@@ -4303,7 +4303,6 @@ var Expr = Sizzle.selectors = {
 		"checkbox": createInputFunction("checkbox"),
 		"file": createInputFunction("file"),
 		"password": createInputFunction("password"),
-		"image": createInputFunction("image"),
 
 		"submit": createButtonFunction("submit"),
 		"reset": createButtonFunction("reset"),
